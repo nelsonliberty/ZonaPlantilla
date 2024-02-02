@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<div align="center"><img src=https://i.postimg.cc/0jdYjzBT/Zona-liberty.gif></div>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<h3>Es posible que tarde unos segundos en cargar completamente la lista</h3>
+<h5>Version 2.0 - Optimizado para PC</h5>
+<h5>Data 29/09/2023</h5>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+    <link rel="" href="https://cdn.datatables.net/fixedheader/3.1.6/css/fixedHeader.dataTables.min.css">
+
+<style>
+/*estilos para la tabla*/
+table th {
+background-color: #732e30;
+color: white;   
+}
+</style>
+
+</head>
+<body>
+
+ <table id="example" class="display" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>COBERTURA</th>
+                        <th>SECTOR - LOCALIDAD - URB</th>
+                        <th>CIUDAD</th>
+                        <th>PARROQUIA</th>
+                        <th>MUNICIPIO</th>
+                        <th>ESTADO</th>
+                        <th>CODIGO POSTAL</th>
+                        <th>TIENDA</th>
+                    </tr>
+                </thead>
+                <tbody>
+<tr>	<td>NO</td>	<td>COMUNIDAD INDIGENA KARInA MAYAGUA</td>	<td>ALMACEN</td>	<td>ORINOCO</td>	<td>HERES</td>	<td>BOLIVAR</td>	<td>8001</td>	</tr>
+<tr>	<td>NO</td>	<td>COMUNIDAD LAS BOMBITAS</td>	<td>ALMACEN</td>	<td>ORINOCO</td>	<td>HERES</td>	<td>BOLIVAR</td>	<td>8001</td>	<td>ALA</td> </tr>
+	<td>NO</td>	<td> SECTOR PLAN BONITO</td>	<td>EL COROZO</td>	<td>RAUL CUENCA</td>	<td>VALMORE RODRIGUEZ</td>	<td>ZULIA</td>	<td>4014</td>	<td>ALA</td> </tr>
+<tr>	<td>NO</td>	<td> SECTOR SABANA DE MACHANGO</td>	<td>EL COROZO</td>	<td>RAUL CUENCA</td>	<td>VALMORE RODRIGUEZ</td>	<td>ZULIA</td>	<td>4014</td><td>ALA</td> </tr>
+<tr>	<td>NO</td>	<td> SECTOR SIPAYARE</td>	<td>EL COROZO</td>	<td>RAUL CUENCA</td>	<td>VALMORE RODRIGUEZ</td>	<td>ZULIA</td>	<td>4014</td> <td>ALA</td> 	</tr>
+
+                </tbody>               
+ </table>  
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/fixedheader/3.1.6/js/dataTables.fixedHeader.min.js"></script> 
+
+<script>
+let temp = $("#btn1").clone();
+$("#btn1").click(function(){
+    $("#btn1").after(temp);
+});
+
+$(document).ready(function(){
+    var table = $('#example').DataTable({
+       orderCellsTop: true,
+       fixedHeader: true 
+    });
+
+    //Creamos una fila en el head de la tabla y lo clonamos para cada columna
+    $('#example thead tr').clone(true).appendTo( '#example thead' );
+
+    $('#example thead tr:eq(1) th').each( function (i) {
+        var title = $(this).text(); //es el nombre de la columna
+        $(this).html( '<input type="text" placeholder="Search...'+title+'" />' );
+ 
+        $( 'input', this ).on( 'keyup change', function () {
+            if ( table.column(i).search() !== this.value ) {
+                table
+                    .column(i)
+                    .search( this.value )
+                    .draw();
+            }
+        } );
+    } );   
+});
+
+
+ 
+
+</script>
+
+<h5>Prohibida su reproduccion, total o parcialmente</h5>
+<h5>Todos los derechos reservados</h5>
+<A href="https://www.libertyexpress.com/">Liberty Express</A><br> 
+<img src=https://i.postimg.cc/hjcNhdyn/comrcializacion.png>
+
+</body>
+
+</html>
